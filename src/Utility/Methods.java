@@ -3,7 +3,11 @@ package Utility;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import Objects.Employee;
 
 public class Methods {
 	
@@ -32,16 +36,32 @@ public class Methods {
 	}
 	
 	
-	public static void getAllEmployees(Connection connection) {
+	public static ArrayList getAllEmployees(Connection connection) {
 		PreparedStatement preparedStatement = null;
-		String selectSQL = "select * from emp";
+		ArrayList<Employee> aList = new ArrayList<Employee>();
 		try {
-			preparedStatement = connection.prepareStatement(selectSQL);
+			preparedStatement = connection.prepareStatement("select * from emp");
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while (rs.next()) {
+				Employee emp = new Employee(0, 0, 0, null, null, null, 0, 0);
+				
+				emp.setEmpNo(rs.getInt("empno"));
+				emp.seteName(rs.getString("ename"));
+				emp.setJob(rs.getString("job"));
+				emp.setManager(rs.getInt("mgr"));
+				emp.setHiredate(rs.getString("hiredate"));
+				emp.setSalary(rs.getLong("sal"));
+				emp.setCommission(rs.getDouble("comm"));
+				emp.setDepNo(rs.getInt("deptno"));
+				
+				aList.add(emp);
+			}
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
-		
+		return aList;
 	}
 	
 	
