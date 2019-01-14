@@ -62,11 +62,11 @@ public class Methods {
 	}
 	
 	
-	public static void deteleEmployee(Connection connection, int empno) {
+	public static void deleteEmployee(Connection connection, int empno) {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = connection.prepareStatement("Delete from emp where empNo = ?");
+			preparedStatement = connection.prepareStatement("Delete from emp where empno = ?");
 			preparedStatement.setInt(1, empno);	
 			preparedStatement.executeUpdate();
 			preparedStatement.close();

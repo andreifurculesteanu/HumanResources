@@ -106,8 +106,8 @@ public class Employee {
 	public String toString() {
 		return "<tr><td>" + empNo + " - " + depNo + " - " + manager + " - " + eName
 				+ " - " + hiredate + " - " + job + " - " + salary + " - " + commission
-				+ "    " + "<a href='?delete="+empNo+"'> <img src='./img/delete.png'> </a>"
-				+ "    " + "<a href='?mod="+empNo+"'> <img src='./img/edit.png'> </a>" + "</tr></td>";
+				+ "    " + "<a href='ServletApp?delete="+empNo+"'> <img src='./img/delete.png'> </a>"
+				+ "    " + "<a href='ServletApp?mod="+empNo+"'> <img src='./img/edit.png'> </a>" + "</tr></td>";
 	}
 	
 	
