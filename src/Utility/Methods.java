@@ -35,7 +35,11 @@ public class Methods {
 		return connection;
 	}
 	
-	
+	/**
+	 * 
+	 * @param connection
+	 * @return
+	 */
 	public static ArrayList getAllEmployees(Connection connection) {
 		PreparedStatement preparedStatement = null;
 		ArrayList<Employee> aList = new ArrayList<Employee>();
@@ -44,24 +48,34 @@ public class Methods {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while (rs.next()) {
-				Employee emp = new Employee(0, 0, 0, null, null, null, 0, 0);
-				
-				emp.setEmpNo(rs.getInt("empno"));
-				emp.seteName(rs.getString("ename"));
-				emp.setJob(rs.getString("job"));
-				emp.setManager(rs.getInt("mgr"));
-				emp.setHiredate(rs.getString("hiredate"));
-				emp.setSalary(rs.getLong("sal"));
-				emp.setCommission(rs.getDouble("comm"));
-				emp.setDepNo(rs.getInt("deptno"));
-				
+				Employee emp = new Employee(rs.getInt("empno"), rs.getString("ename"), rs.getString("job"), 
+											rs.getInt("mgr"), rs.getString("hiredate"), rs.getDouble("sal"), 
+											rs.getDouble("comm"), rs.getInt("deptno"));
 				aList.add(emp);
 			}
-			
+			preparedStatement.close();
+			connection.close();
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
 		return aList;
+	}
+	
+	
+	public static void deteleEmployee(Connection connection, int empno) {
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			preparedStatement = connection.prepareStatement("Delete from emp where empNo = ?");
+			preparedStatement.setInt(1, empno);	
+			preparedStatement.executeUpdate();
+			preparedStatement.close();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	

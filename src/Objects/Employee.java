@@ -10,7 +10,7 @@ public class Employee {
 	double salary, commission;
 	
 	
-	public Employee(int empNo, int depNo, int manager, String eName, String hiredate, String job, double salary, double commission) {
+	public Employee(int empNo, String eName, String job, int manager, String hiredate, double salary, double commission, int depNo) {
 		this.empNo = empNo;
 		this.depNo = depNo;
 		this.manager = manager;
@@ -104,8 +104,10 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empNo=" + empNo + ", depNo=" + depNo + ", manager=" + manager + ", eName=" + eName
-				+ ", hiredate=" + hiredate + ", job=" + job + ", salary=" + salary + ", commission=" + commission + "]";
+		return "<tr><td>" + empNo + " - " + depNo + " - " + manager + " - " + eName
+				+ " - " + hiredate + " - " + job + " - " + salary + " - " + commission
+				+ "    " + "<a href='?delete="+empNo+"'> <img src='./img/delete.png'> </a>"
+				+ "    " + "<a href='?mod="+empNo+"'> <img src='./img/edit.png'> </a>" + "</tr></td>";
 	}
 	
 	

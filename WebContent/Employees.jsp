@@ -11,10 +11,12 @@
 </head>
 <body>
 	<h1> Employee </h1>
-	
-	<% for(Employee elem: aList) {
-            elem.toString();
-       } %>
-	
+	<form action="ServletApp">
+		<table>
+			<% for(Employee elem: aList) { %>
+		       <%=  elem.toString() %>
+		    <% } %>
+		</table>
+	</form>
 </body>
 </html>

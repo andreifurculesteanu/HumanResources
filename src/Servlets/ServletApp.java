@@ -37,9 +37,25 @@ public class ServletApp extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		Connection con = Methods.createConnection(URL, USER, PASS);
 		ArrayList<Employee> aList = Methods.getAllEmployees(con);
 		request.setAttribute("aList", aList);
+		
+//		int delete = -1;
+//		int mod = -1;
+//		
+//		delete = Integer.parseInt(request.getParameter("delete"));
+//		mod = Integer.parseInt(request.getParameter("delete"));
+//		System.out.println(delete);
+//		System.out.println(mod);
+//		if (delete != -1) {
+//			Connection con1 = Methods.createConnection(URL, USER, PASS);
+//			Methods.deteleEmployee(con1, delete);
+//		} else if (mod != -1) {
+//			
+//		}
+//		
 		
 		/* Las 3 siguientes lineas delegan al JSP pintar el formulario (segun el doGet)*/
 		String vista = "/Employees.jsp";
