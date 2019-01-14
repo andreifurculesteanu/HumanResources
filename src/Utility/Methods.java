@@ -74,9 +74,26 @@ public class Methods {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
+	
+	public static void addEmployee(Connection connection, Employee emp) {
+		PreparedStatement preparedStatement = null;
+		
+		try {
+			preparedStatement = connection.prepareStatement("Insert into emp values (?, ?, ?, ?, ?, ?, ?, ?)");
+			preparedStatement.setInt(1, emp.getEmpNo());
+			preparedStatement.setString(2, emp.geteName());
+			preparedStatement.setString(3, emp.getJob());
+			preparedStatement.setInt(4, emp.getManager());
+			preparedStatement.setString(5, emp.getHiredate());
+			preparedStatement.setDouble(6, emp.getSalary());
+			preparedStatement.setDouble(7, emp.getCommission());
+			preparedStatement.setInt(8, emp.getDepNo());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }
