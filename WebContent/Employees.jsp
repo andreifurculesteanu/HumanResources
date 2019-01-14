@@ -8,13 +8,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>HH-RR Employee</title>
+
+	<style>
+		
+	</style>
+
+
 </head>
 <body>
 	<h1> Employee </h1>
 	<form action="ServletApp">
 		<table>
 			<% for(Employee elem: aList) { %>
-		       <%=  elem.toString() %>
+		      	<tr><td> <%= elem.toString() %> <a href='ServletApp?delete=<%= elem.getEmpNo() %>'> <img src='./img/delete.png'> </a> <a href='ServletApp?mod=<%= elem.getEmpNo() %>'> <img src='./img/edit.png'></a> </td></tr>
 		    <% } %>
 		</table>
 	</form>

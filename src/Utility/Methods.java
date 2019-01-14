@@ -66,7 +66,7 @@ public class Methods {
 		PreparedStatement preparedStatement = null;
 		
 		try {
-			preparedStatement = connection.prepareStatement("Delete from emp where empno = ?");
+			preparedStatement = connection.prepareStatement("delete from emp where empno = ?");
 			preparedStatement.setInt(1, empno);	
 			preparedStatement.executeUpdate();
 			preparedStatement.close();
