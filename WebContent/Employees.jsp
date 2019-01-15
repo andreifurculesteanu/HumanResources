@@ -30,7 +30,7 @@
 
 		.center {
 			margin: auto;
-			width: 60%;
+			width: 65%;
 			padding: 20px;
 		}
 	</style>
@@ -40,12 +40,30 @@
 	<form action="ServletApp">
 			<table class="center">
 				<tr>
-					<th>Employee</th>
+					<th>Number</th>
+					<th>Name</th>
+					<th>Job</th>
+					<th>Manager</th>
+					<th>Hiredate</th>
+					<th>Salary</th>
+					<th>Commission</th>
+					<th>Department</th>
 					<th>Delete</th>
 					<th>Modify</th>
 				</tr>
 				<% for(Employee elem: aList) { %>
-					<tr><td> <%= elem.toString() %></td> <td><a href='ServletApp?delete=<%= elem.getEmpNo() %>'> <img src='./img/delete.png'> </a> </td><td> <a href='ServletApp?mod=<%= elem.getEmpNo() %>'> <img src='./img/edit.png'></a> </td></tr>
+					<tr>
+						<td> <%= elem.getEmpNo() %></td> 
+						<td> <%= elem.geteName() %></td>
+						<td> <%= elem.getJob() %></td>
+						<td> <%= elem.getManager() %></td>
+						<td> <%= elem.getHiredate() %></td>
+						<td> <%= elem.getSalary() %></td>
+						<td> <%= elem.getCommission() %></td>
+						<td> <%= elem.getDepNo() %></td>
+						<td><a href='ServletApp?delete=<%= elem.getEmpNo() %>'> <img src='./img/delete.png'> </a> </td>
+						<td> <a href='ServletApp?mod=<%= elem.getEmpNo() %>'> <img src='./img/edit.png'></a> </td>
+					</tr>
 				<% } %>
 			</table>
 		
