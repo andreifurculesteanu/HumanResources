@@ -44,7 +44,11 @@ public class ServletApp extends HttpServlet {
 		
 		String delete = request.getParameter("delete");
 		if (delete != null) {
-			Methods.deleteEmployee(con, Integer.parseInt(delete));
+			Connection con1 = Methods.createConnection(URL, USER, PASS);
+			Methods.deleteEmployee(con1, Integer.parseInt(delete));
+			Connection con2 = Methods.createConnection(URL, USER, PASS);
+			aList = Methods.getAllEmployees(con2);
+			request.setAttribute("aList", aList);
 		}
 		
 		/* Las 3 siguientes lineas delegan al JSP pintar el formulario (segun el doGet)*/
