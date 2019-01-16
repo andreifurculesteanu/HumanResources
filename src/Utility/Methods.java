@@ -59,7 +59,7 @@ public class Methods {
 			// TODO: handle exception
 		}
 		return aList;
-	}
+	} // end getAllEmployees()
 	
 	
 	public static void deleteEmployee(Connection connection, int empno) {
@@ -74,26 +74,36 @@ public class Methods {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
+	} // end deleteEmployee()
 	
 	
-	public static void addEmployee(Connection connection, Employee emp) {
+	public static int addEmployee(Connection connection, Employee emp) {
 		PreparedStatement preparedStatement = null;
-		
+		PreparedStatement psCheck = null;
+		int val = 0;
 		try {
-			preparedStatement = connection.prepareStatement("Insert into emp values (?, ?, ?, ?, ?, ?, ?, ?)");
-			preparedStatement.setInt(1, emp.getEmpNo());
-			preparedStatement.setString(2, emp.geteName());
-			preparedStatement.setString(3, emp.getJob());
-			preparedStatement.setInt(4, emp.getManager());
-			preparedStatement.setString(5, emp.getHiredate());
-			preparedStatement.setDouble(6, emp.getSalary());
-			preparedStatement.setDouble(7, emp.getCommission());
-			preparedStatement.setInt(8, emp.getDepNo());
+			psCheck = connection.prepareStatement("Select empno from emp where empno = " + emp.getEmpNo());
+			ResultSet rowsAffected = psCheck.executeQuery();
+			while (rowsAffected.next()) {
+				val++;
+			}
+			if (val == 0) {
+				preparedStatement = connection.prepareStatement("Insert into emp values (?, ?, ?, ?, ?, ?, ?, ?)");
+				preparedStatement.setInt(1, emp.getEmpNo());
+				preparedStatement.setString(2, emp.geteName());
+				preparedStatement.setString(3, emp.getJob());
+				preparedStatement.setInt(4, emp.getManager());
+				preparedStatement.setString(5, emp.getHiredate());
+				preparedStatement.setDouble(6, emp.getSalary());
+				preparedStatement.setDouble(7, emp.getCommission());
+				preparedStatement.setInt(8, emp.getDepNo());
+				preparedStatement.executeUpdate();
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+		return val;
+	} // end addEmployee()
 	
 }

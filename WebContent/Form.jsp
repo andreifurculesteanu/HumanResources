@@ -15,30 +15,28 @@
     <form class="w3-container">
             <p>
             <label>*Number</label>
-            <input class="w3-input" type="text"></p>
+            <input class="w3-input" type="text" placeholder="requested"></p>
             <p>
             <label>*Name</label>
-            <input class="w3-input" type="text"></p>
+            <input class="w3-input" type="text" placeholder="requested"></p>
             <p>
             <label>*Job</label>
-            <input class="w3-input" type="text"></p>
+            <input class="w3-input" type="text" placeholder="requested"></p>
             <p>
             <label>Manager</label>
-            <input class="w3-input" type="text"></p>
+            <input class="w3-input" type="text" ></p>
             <p>
             <label>*Hiredate</label>
-            <input class="w3-input" type="text" placeholder="dd/mm/yyyy"></p>
+            <input class="w3-input" type="text" placeholder="dd/mm/yyyy - requested"></p>
             <p>
             <label>*Salary</label>
-            <input class="w3-input" type="text"></p>
+            <input class="w3-input" type="text" placeholder="requested"></p>
             <p>
             <label>Commision</label>
             <input class="w3-input" type="text"></p>
             <p>
             <label>Department</label>
             <input class="w3-input" type="text"></p>
-            </br>
-            <p>*Required field</p>
             
             <button class="w3-btn w3-blue">Register</button></p>
 
