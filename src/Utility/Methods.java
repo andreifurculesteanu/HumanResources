@@ -81,8 +81,10 @@ public class Methods {
 		PreparedStatement preparedStatement = null;
 		PreparedStatement psCheck = null;
 		int val = 0;
+		String hiredate;
 		try {
-			psCheck = connection.prepareStatement("Select empno from emp where empno = " + emp.getEmpNo());
+			psCheck = connection.prepareStatement("Select empno from emp where empno = ?");
+			psCheck.setInt(1, emp.getEmpNo() );
 			ResultSet rowsAffected = psCheck.executeQuery();
 			while (rowsAffected.next()) {
 				val++;
@@ -93,7 +95,8 @@ public class Methods {
 				preparedStatement.setString(2, emp.geteName());
 				preparedStatement.setString(3, emp.getJob());
 				preparedStatement.setInt(4, emp.getManager());
-				preparedStatement.setString(5, emp.getHiredate());
+				hiredate = "str_to_date(' " + emp.getHiredate() + "')";
+				preparedStatement.setString(5, hiredate);
 				preparedStatement.setDouble(6, emp.getSalary());
 				preparedStatement.setDouble(7, emp.getCommission());
 				preparedStatement.setInt(8, emp.getDepNo());

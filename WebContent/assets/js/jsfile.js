@@ -6,6 +6,10 @@ function confirmAdd(){
     if(!confirm("Do you want to add a new employee")) return false;
 }
 
+function goHome(){
+	window.location.href = "http://localhost:8080/HumanResources/ServletApp";
+}
+
 function display(){
     document.getElementById("disp").innerHTML = " ";
 
