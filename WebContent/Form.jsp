@@ -15,9 +15,13 @@
     <div class="w3-container w3-blue">
   	     <h2>Add new employee</h2>
     </div>
-    <div> <%=inserted %> </div>
+    <div>
+    <% if(inserted != null){ %>
+    		<%=inserted %> 
+    <% }%>
+    </div>
     <form class="w3-container" action="ServletApp">
-            <input type="hidden"  name="opcion" value="2">
+            <input type="hidden"  name="opcion" value="add2">
             <p>
             <label>*Number</label>
             <input class="w3-input" type="text" placeholder="requested" name="empno"></p>

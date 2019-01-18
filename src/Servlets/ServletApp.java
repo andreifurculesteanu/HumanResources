@@ -38,16 +38,18 @@ public class ServletApp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String opcion = request.getParameter("opcion");
-		String inserted = " ";
+		String inserted = "";
 		
 		if (opcion != null) {
 			if (opcion.equals("add")) {
+				//go to form.jsp
 					request.setAttribute("inserted", inserted);
 					/* Las 3 siguientes lineas delegan al JSP pintar el formulario (segun el doGet)*/
 					String vista = "/Form.jsp";
 			    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(vista);
 			        dispatcher.forward(request, response);
 			} else if(opcion.equals("add2")) {
+				//once in form.jsp get the parameters, then add the new employee if everything is ok
 				int empno = Integer.parseInt(request.getParameter("empno"));
 				String ename = request.getParameter("ename");
 				String job = request.getParameter("job");
@@ -58,7 +60,9 @@ public class ServletApp extends HttpServlet {
 				int depno = Integer.parseInt(request.getParameter("depno"));
 				Employee emp = new Employee(empno, ename, job, mgr, hiredate, sal, comm, depno);
 				Connection con1 = Methods.createConnection(URL, USER, PASS);
+				System.out.println("antes");
 				int value = Methods.addEmployee(con1, emp);
+				System.out.println("despues");
 				if (value == 0) {
 					inserted = "Employee added correctly";
 				} else {
