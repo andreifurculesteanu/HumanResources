@@ -109,4 +109,20 @@ public class Methods {
 		return val;
 	} // end addEmployee()
 	
+	
+	
+	public static void modifyEmployee(Connection connection, Employee emp) {
+		PreparedStatement ps = null;
+		 try {
+			ps = connection.prepareStatement("update emp set ename='" + emp.geteName() + "', job='" + emp.getJob() + "', mgr=" + emp.getManager() + 
+															", hiredate=str_to_date('" + emp.getHiredate() + "', %Y-%m-%d'), sal=" + emp.getSalary() + 
+															", comm=" + emp.getCommission() + ", deptno=" + emp.getDepNo() + 
+											"where empno=" + emp.getEmpNo());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 }

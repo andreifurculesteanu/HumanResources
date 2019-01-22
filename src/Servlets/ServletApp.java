@@ -50,26 +50,44 @@ public class ServletApp extends HttpServlet {
 			        dispatcher.forward(request, response);
 			} else if(opcion.equals("add2")) {
 				//once in form.jsp get the parameters, then add the new employee if everything is ok
-				int empno = Integer.parseInt(request.getParameter("empno"));
+				String empno1 = request.getParameter("empno");
 				String ename = request.getParameter("ename");
 				String job = request.getParameter("job");
-				int mgr = Integer.parseInt(request.getParameter("mgr"));
+				String manager = request.getParameter("mgr");
 				String hiredate = request.getParameter("hiredate");
-				double sal = Double.parseDouble(request.getParameter("sal"));
-				double comm = Double.parseDouble(request.getParameter("comm"));
-				int depno = Integer.parseInt(request.getParameter("depno"));
-				Employee emp = new Employee(empno, ename, job, mgr, hiredate, sal, comm, depno);
-				Connection con1 = Methods.createConnection(URL, USER, PASS);
-				System.out.println("antes");
-				int value = Methods.addEmployee(con1, emp);
-				System.out.println("despues");
-				if (value == 0) {
-					inserted = "Employee added correctly";
-				} else {
-					inserted = "The employee already exists";
-				}
-				request.setAttribute("inserted", inserted);
+				String salary = request.getParameter("sal");
+				String commision = request.getParameter("comm");
+				String depart = request.getParameter("depno");
+				int mgr = 0;
+				double comm = 0;
+				int depno = 0;
 				
+				if (empno1.length() > 0 && ename.length() > 0 && job.length() > 0 && hiredate.length() > 0 && salary.length() > 0) {
+					int empno = Integer.parseInt(empno1);
+					if (manager.length() > 0) {
+						mgr = Integer.parseInt(manager);
+					}
+					double sal = Double.parseDouble(salary);
+					if (commision.length() > 0) {
+						comm = Double.parseDouble(commision);
+					}
+					if (depart.length() > 0 ) {
+						depno = Integer.parseInt(depart);
+					}		
+					Employee emp = new Employee(empno, ename, job, mgr, hiredate, sal, comm, depno);
+					Connection con1 = Methods.createConnection(URL, USER, PASS);
+					int value = Methods.addEmployee(con1, emp);
+					if (value == 0) {
+						inserted = "Employee added correctly";
+					} else {
+						inserted = "The employee already exists";
+					}
+					request.setAttribute("inserted", inserted);
+				} else {
+					inserted = "Please insert all the requested fields";
+					request.setAttribute("inserted", inserted);
+				}
+
 				/* Las 3 siguientes lineas delegan al JSP pintar el formulario (segun el doGet)*/
 				String vista = "/Form.jsp";
 		    	RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(vista);

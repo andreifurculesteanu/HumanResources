@@ -16,7 +16,7 @@
 	<h1> Employee </h1>
 	<div id="disp">
         <input type="button" value="Search" onclick="display()">
-        <a href="ServletApp?opcion=add"> <input type="button" value="Add new employee" onclick="return confirmAdd()"> </a>
+        <a href="ServletApp?opcion=add"> <input type="button" value="Add new employee"> </a>
     </div>
 	<table class="center">
     	<tr>
