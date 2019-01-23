@@ -100,10 +100,8 @@ public class Methods {
 				preparedStatement.setString(2, emp.geteName());
 				preparedStatement.setString(3, emp.getJob());
 				preparedStatement.setInt(4, emp.getManager());
-				
-				  	hiredate = emp.getHiredate();
-				 	System.out.println(hiredate);
-				 	preparedStatement.setString(5, hiredate);
+				hiredate = emp.getHiredate();
+				preparedStatement.setString(5, hiredate);
 				/*
 				String patron = "dd-MM-yyyy";
 				SimpleDateFormat sdf = new SimpleDateFormat(patron);
