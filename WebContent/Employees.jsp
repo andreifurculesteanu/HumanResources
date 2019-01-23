@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.ArrayList, Objects.Employee" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" import="java.util.ArrayList,Models.Employee" pageEncoding="ISO-8859-1"%>
 <% 
 	ArrayList<Employee> aList = (ArrayList<Employee>) request.getAttribute("aList");
 	

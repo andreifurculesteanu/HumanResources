@@ -36,7 +36,7 @@
             <input class="w3-input" type="text" name="mgr"></p>
             <p>
             <label>*Hiredate</label>
-            <input class="w3-input" type="text" placeholder="dd/mm/yyyy - requested" name="hiredate"></p>
+            <input class="w3-input" type="text" placeholder="dd-mm-yyyy - requested" name="hiredate"></p>
             <p>
             <label>*Salary</label>
             <input class="w3-input" type="text" placeholder="requested" name="sal"></p>
